@@ -1,0 +1,103 @@
+// Media Queries
+//
+// Mixins for specifying responsive breakpoints
+// Inspiration pulled from https://davidwalsh.name/write-media-queries-sass
+
+	@mixin media-query($media-query) {
+
+		// Ancient 
+			@if $media-query == ancient {
+				@media screen and (max-width: $breakpoint-phone - 1) {
+					@content;
+				}
+			}
+
+		// Phone
+			@if $media-query == phone {
+				@media screen and (min-width: $breakpoint-phone) and (max-width: $breakpoint-phablet - 1) {
+					@content;
+				}
+			}
+
+			@if $media-query == phone-and-down {
+				@media screen and (max-width: $breakpoint-phablet - 1) {
+					@content;
+				}
+			}
+
+			@if $media-query == phone-and-up {
+				@media screen and (min-width: $breakpoint-phone) {
+					@content;
+				}
+			}
+
+		// Tablet
+			@if $media-query == tablet {
+				@media screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop - 1) {
+					@content;
+				}
+			}
+
+			@if $media-query == tablet-and-down {
+				@media screen and (max-width: $breakpoint-desktop - 1) {
+					@content;
+				}
+			}
+
+			@if $media-query == tablet-and-up {
+				@media screen and (min-width: $breakpoint-tablet) {
+					@content;
+				}
+			}
+
+		// Phablet
+			@if $media-query == phablet {
+				@media screen and (min-width: $breakpoint-phablet) and (max-width: $breakpoint-tablet - 1) {
+					@content;
+				}
+			}
+
+			@if $media-query == phablet-and-down {
+				@media screen and (max-width: $breakpoint-tablet - 1) {
+					@content;
+				}
+			}
+
+			@if $media-query == phablet-and-up {
+				@media screen and (min-width: $breakpoint-phablet) {
+					@content;
+				}
+			}
+
+		// Desktop
+			@if $media-query == desktop {
+				@media screen and (min-width: $breakpoint-desktop) and (max-width: $breakpoint-large - 1) {
+					@content;
+				}
+			}
+
+			@if $media-query == desktop-and-down {
+				@media screen and (max-width: $breakpoint-large - 1) {
+					@content;
+				}
+			}
+
+			@if $media-query == desktop-and-up {
+				@media screen and (min-width: $breakpoint-desktop) {
+					@content;
+				}
+			}
+
+		// Large
+			@if $media-query == large {
+				@media screen and (min-width: $breakpoint-large) {
+					@content;
+				}
+			}
+
+			@if $media-query == large-and-down {
+				@media screen and (max-width: $breakpoint-large - 1) {
+					@content;
+				}
+			}
+	}

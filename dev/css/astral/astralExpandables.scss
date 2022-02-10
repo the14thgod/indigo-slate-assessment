@@ -1,0 +1,89 @@
+// Variables & Mixins
+@import '../base/variables';
+@import '../mixins/mixins';
+
+/*-------------------------------------------------------------------------------------------------
+Astral Expandables
+-------------------------------------------------------------------------------------------------*/
+	.astral-expandables{
+		> .expandable{
+			height: 50px;
+			overflow: hidden;
+			position:relative;
+			transition: height 200ms ease-in;
+			z-index: 1;
+
+			& + .expandable{margin-top:0;}
+
+			// Triggering Element(link)
+			> .trigger{
+				position:relative;
+				display: block;
+
+				// Icon State
+				&:after{
+					color: $color-white;
+					content: '\2039';
+					font-size: 30px;
+					height: 50px;
+					line-height: 50px;
+					position: absolute;
+					right: 0;
+					text-align: center;
+					top: 0;
+					width: 50px;
+					transform: rotate(-90deg);
+					transition: transform $animation-duration ease-in;
+				}
+			}
+
+			// Content
+			> .content{
+				position:absolute;
+				float:left;
+				z-index:-1;
+				visibility:hidden;
+				width: 100%;
+			}
+
+			// Loading
+			&.loading > .trigger:after{
+				content: '';
+				background: url('../media/images/ajax-loader.gif') no-repeat;
+				top:14px;
+			}
+
+			// Opened
+			&.open{
+				> .trigger{
+					&:after{
+						transform: rotate(90deg);
+					}
+				}
+				> .content{position:relative;float:none;visibility:visible;z-index:0;}
+			}
+		}
+
+		// Dropdown 
+		&.dropdown{
+			> .expandable{
+				> .content{
+					overflow: hidden;
+					padding: 0; /* children should contain padding, else box-model gets upset when trying to animate height */
+					transition: height 200ms ease-in;
+					background: #aaa;
+
+					> *{padding: 20px 25px;}
+				}
+
+				&.open{
+					z-index:100;
+
+					> .trigger{background:#0b8592;color:#fff;z-index:10;}
+					> .content{position: absolute;top: 47px;}
+				}
+			}
+		}
+	}
+
+	/* Variants ---------------------------------------------------------------------------------*/

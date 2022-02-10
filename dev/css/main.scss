@@ -1,0 +1,14 @@
+// Variables & Mixins
+@import 'base/variables';
+@import 'mixins/mixins';
+
+// Base Styles
+@import 'base/typography';
+@import 'base/buttons';
+@import 'base/icons';
+
+// Structure
+@import 'structure/structure';
+
+// Templates (home, general, contact etc)
+@import 'templates/templates';

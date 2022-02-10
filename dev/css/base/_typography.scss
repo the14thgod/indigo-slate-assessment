@@ -1,0 +1,40 @@
+/*-------------------------------------------------------------------------------------------------
+Typography
+/*-----------------------------------------------------------------------------------------------*/
+	body {
+		background:#fff;
+		color: $color-gray-dark;
+		font-family: Verdana, sans-serif;
+		line-height: $line-height;
+	}
+
+	p {
+		* + & {
+			margin-top: 30px;
+		}
+	}
+	
+	/* Headings ---------------------------------------------------------------------------------*/
+	
+	/* Lists ------------------------------------------------------------------------------------*/
+	
+	/* Links ------------------------------------------------------------------------------------*/
+		a:link,
+		a:visited {
+			color: $color-secondary;
+			text-decoration:none;
+			transition: color $animation-duration ease-in;
+			
+			&:hover,
+			&:focus {
+				color: $color-tertiary;
+				text-decoration:none;
+			}
+			&:after {
+				color: #000;
+			}
+		}
+
+	/* Utility Classes --------------------------------------------------------------------------*/
+		.text-error{color:red;}
+		.text-success{color:green;}

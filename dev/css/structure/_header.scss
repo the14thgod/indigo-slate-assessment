@@ -1,0 +1,126 @@
+/*-------------------------------------------------------------------------------------------------
+Header
+/*-----------------------------------------------------------------------------------------------*/
+#header {
+	background: #eee;
+	position: relative;
+	z-index: 100;
+
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.user-info {
+		color: $color-white;
+		padding: 10px;
+
+		@include media-query(desktop-and-up){
+			display: none;
+		}
+	}
+
+	#mobile-menu {
+		display: none;
+
+		svg {
+			.bar {
+				transform-box: fill-box;
+				transform-origin: 50% 50%;
+				transition: opacity 1ms ease-in 150ms;
+			}
+		}
+
+		&.isOpening {
+			svg {
+				animation: animateRotation180 150ms ease-in forwards 150ms;
+			}
+
+			.bar.top {
+				animation: animateMobileMenuTopBarX 350ms ease-in forwards;
+			}
+
+			.bar.mid {
+				opacity: 0;
+			}
+
+			.bar.bot {
+				animation: animateMobileMenuBotBarX 350ms ease-in forwards;	
+			}
+		}
+
+		&.isOpened {
+			.bar.top {
+				transform: translateY(8px) rotate(45deg);
+			}
+
+			.bar.mid {
+				opacity: 0;
+			}
+
+			.bar.bot {
+				transform: translateY(-8px) rotate(-45deg);
+			}
+		}
+
+		&.isClosing {
+			svg {
+				animation: animateRotation180 150ms ease-in reverse;
+			}
+
+			.bar.top {
+				animation: animateMobileMenuTopBarX 350ms ease-in reverse 75ms;
+				transform: translateY(0) rotate(0);
+			}
+
+			.bar.mid {
+				opacity: 1;
+			}
+
+			.bar.bot {
+				animation: animateMobileMenuBotBarX 350ms ease-in reverse 75ms;
+				transform: translateY(0) rotate(0);
+			}
+		}
+
+		@include media-query(tablet-and-down){
+			align-items: center;
+			display: flex;
+			margin-left: auto;
+		}
+	}
+}
+
+	/* Animations -------------------------------------------------------------------------------*/
+		@keyframes animateMobileMenuTopBarX {
+			40%{
+				transform: translateY(8px) rotate(0);
+			}
+			60%{
+				transform: translateY(8px) rotate(0);
+			}
+			100%{
+				transform: translateY(8px) rotate(45deg);
+			}
+		}
+
+		@keyframes animateMobileMenuBotBarX {
+			40%{
+				transform: translateY(-8px) rotate(0);
+			}
+			60%{
+				transform: translateY(-8px) rotate(0);
+			}
+			100%{
+				transform: translateY(-8px) rotate(-45deg);
+			}
+		}
+
+		@keyframes animateRotation180 {
+			0% {
+				transform: rotate(0);
+			}
+			100% {
+				transform: rotate(180deg);
+			}
+		}
